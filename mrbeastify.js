@@ -195,6 +195,6 @@ getHighestImageIndex()
     .then(() => {
         setInterval(applyOverlayToThumbnails, 100);
         console.log(
-            "MrBeastify Loaded Successfully, " + highestImageIndex + " images detected. " + blacklistStatus
+            "Borodulkify Loaded Successfully, " + highestImageIndex + " images detected. " + blacklistStatus
         );
     })
