@@ -19,6 +19,8 @@ youtuber **Borodulka** to every thumbnail.
 [![Button Download Chrome]][Download Chrome]  
 [![Button Download Edge]][Download Edge]
 
+[![Button Telegram]][Telegram]
+
 </div>
 
 <br>
@@ -27,7 +29,8 @@ youtuber **Borodulka** to every thumbnail.
 
 -   This extension should be compatible with any Firefox / Chromium based browser.
 
--   This extension was inspired by **[Unnecessary Inventions][UI YouTube]** and his **[Website][UI Website]**.
+
+-   This extension was inspired by **[Unnecessary Inventions][Origanal Author YouTube]** and his **[Website][Origanal Website]**.
 
 -   This extension is unofficial and not affiliated with Borodulka or YouTube.
 
@@ -40,14 +43,19 @@ youtuber **Borodulka** to every thumbnail.
 
 [Button Download Edge]: https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logoColor=white&logo=MicrosoftEdge
 
-
-[Download Firefox]: http://addons.mozilla.org/en-GB/firefox/addon/youtube-mrbeastify/
-[Download Chrome]: http://chrome.google.com/webstore/detail/youtube-mrbeastify/dbmaeobgdodeimjdjnkipbfhgeldnmeb
-[Download Edge]: http://microsoftedge.microsoft.com/addons/detail/youtube-mrbeastify/jabaaojkmmljhmnheeihppepcmiadhll
+[Button Telegram]: https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logoColor=white&logo=Telegram
 
 
-[UI YouTube]: http://www.youtube.com/@UnnecessaryInventions
-[UI Website]: http://www.mrbeastify.com/
+[Download Firefox]: https://addons.mozilla.org/en-US/firefox/addon/youtube-borodulkify/
+[Download Chrome]: https://addons.mozilla.org/en-US/firefox/addon/youtube-borodulkify/
+[Download Edge]: https://addons.mozilla.org/en-US/firefox/addon/youtube-borodulkify/
 
+[Telegram]: https://t.me/antioldspicesquad
+
+[Origanal Author YouTube]: http://www.youtube.com/@UnnecessaryInventions
+[Origanal Website]: http://www.mrbeastify.com/
 
 [Development]: https://github.com/MagicJinn/MrBeastify-Youtube/issues/16
+
+## Disclaimer
+*Шановна Служба Безпеки України. Я не маю відношення до цього репозиторію і був доданий сюди без моєї попередньої згоди. Я не погоджуюсь з жодними думками, які висловлені у цьому репозиторії, а мої коміти були написані без моєї згоди.*
