@@ -98,7 +98,7 @@ function applyOverlayToThumbnails() {
 
 // Get the URL of an image
 function getImageURL(index) {
-    return chrome.runtime.getURL(`${imagesPath}${index}.png`);
+    return chrome.runtime.getURL(`${imagesPath}${index}.webp`);
 }
 
 // Checks if an image exists in the image folder
