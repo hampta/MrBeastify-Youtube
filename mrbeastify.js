@@ -2,6 +2,7 @@ const imagesPath = "images/";
 var useAlternativeImages
 var flipBlacklist // Stores flipBlackList.js
 var blacklistStatus
+var highestImageIndex = 148; // Highest image index
 
 // Apply the overlay
 function applyOverlay(thumbnailElement, overlayImageURL, flip = false) {
@@ -95,12 +96,14 @@ function applyOverlayToThumbnails() {
 
 // Get the URL of an image
 function getImageURL(index) {
+    console.log(`${imagesPath}${index}.webp`);
     return chrome.runtime.getURL(`${imagesPath}${index}.webp`);
 }
 
 // Checks if an image exists in the image folder
 async function checkImageExistence(index) {
-    const testedURL = getImageURL(index)
+    try {
+        const testedURL = getImageURL(index)
 
     return fetch(testedURL)
         .then(() => {
@@ -108,6 +111,9 @@ async function checkImageExistence(index) {
         }).catch(error => {
             return false
         })
+    } catch (error) {
+        return false
+    }
 }
 
 ////////////////////////
@@ -135,39 +141,6 @@ function getRandomImageFromDirectory() {
     return randomIndex
 }
 
-var highestImageIndex;
-// Gets the highest index of an image in the image folder starting from 1
-async function getHighestImageIndex() {
-    // Avoid exponential search for smaller values
-    let i = 4;
-
-    // Increase i until i is greater than the number of images
-    while (await checkImageExistence(i)) {
-        i *= 2;
-    }
-
-    // Possible min and max values
-    let min = i <= 4 ? 1 : i / 2;
-    let max = i;
-
-    // Binary search
-    while (min <= max) {
-        // Find the midpoint of possible max and min
-        let mid = Math.floor((min + max) / 2);
-
-        // Check if the midpoint exists
-        if (await checkImageExistence(mid)) {
-            // If it does, next min to check is one greater
-            min = mid + 1;
-        } else {
-            // If it doesn't, max must be at least one less
-            max = mid - 1;
-        }
-    }
-
-    // Max is the size of the image array
-    highestImageIndex = max;
-}
 ////////////////////////
 //  BrandonXLF Magic  //
 ////////////////////////
@@ -188,10 +161,15 @@ function GetFlipBlocklist() {
 
 GetFlipBlocklist()
 
-getHighestImageIndex()
-    .then(() => {
-        setInterval(applyOverlayToThumbnails, 100);
-        console.log(
-            "Borodulkify Loaded Successfully, " + highestImageIndex + " images detected. " + blacklistStatus
-        );
-    })
+// getHighestImageIndex()
+//     .then(() => {
+//         setInterval(applyOverlayToThumbnails, 100);
+//         console.log(
+//             "Borodulkify Loaded Successfully, " + highestImageIndex + " images detected. " + blacklistStatus
+//         );
+//     })
+
+setInterval(applyOverlayToThumbnails, 100);
+console.log(
+    "Borodulkify Loaded Successfully, " + highestImageIndex + " images detected. " + blacklistStatus
+);
