@@ -54,13 +54,15 @@ function FindThumbnails() {
         // Checks whether it's a chapter thumbnail
         const isChapter = parent.closest("#endpoint") !== null
 
+        // Checks if thy thumbnail has loaded
+        const isLoaded = image.complete && image.naturalHeight !== 0;
 
         // Check if thumbnails have already been processed
         const processed = Array.from(parent.children).filter(child => {
             return (
                 child.src &&
                 child.src.includes("extension") ||
-                isVideoPreview || isChapter)
+                isVideoPreview || isChapter || !isLoaded);
         });
 
         return processed.length == 0;
@@ -73,26 +75,21 @@ function applyOverlayToThumbnails() {
 
     // Apply overlay to each thumbnail
     thumbnailElements.forEach((thumbnailElement) => {
-        // Apply overlay and add to processed thumbnails
-        let loops = Math.random() > 0.001 ? 1 : 20; // Easter egg
-
-        for (let i = 0; i < loops; i++) {
-            // Get overlay image URL from your directory
-            const overlayImageIndex = getRandomImageFromDirectory();
-            let flip = Math.random() < 0.25; // 25% chance to flip the image
-            let overlayImageURL
-            if (flip && flipBlacklist && flipBlacklist.includes(overlayImageIndex)) { // Check if the image is on the blacklist
-                if (useAlternativeImages) { // Check if useAlternativeImages is true
-                    overlayImageURL = getImageURL(`textFlipped/${overlayImageIndex}`);
-                } else {
-                    overlayImageURL = getImageURL(overlayImageIndex);
-                }
-                flip = false;
-            } else { // Don't flip the image
+        // Get overlay image URL from your directory
+        const overlayImageIndex = getRandomImageFromDirectory();
+        let flip = Math.random() < 0.25; // 25% chance to flip the image
+        let overlayImageURL
+        if (flip && flipBlacklist && flipBlacklist.includes(overlayImageIndex)) { // Check if the image is on the blacklist
+            if (useAlternativeImages) { // Check if useAlternativeImages is true
+                overlayImageURL = getImageURL(`textFlipped/${overlayImageIndex}`);
+            } else {
                 overlayImageURL = getImageURL(overlayImageIndex);
             }
-            applyOverlay(thumbnailElement, overlayImageURL, flip);
+            flip = false;
+        } else { // Don't flip the image
+            overlayImageURL = getImageURL(overlayImageIndex);
         }
+        applyOverlay(thumbnailElement, overlayImageURL, flip);
     });
 }
 
